@@ -1,0 +1,11 @@
+{
+  "id": "mig_cn6fi3o6l80adig0p01g",
+  "checksum": "1:99f43c13ca8095c148abc49bca828ea7148dd03e5519d295ccbd7db51deef4e6",
+  "operations": [
+    {
+      "addTable": {
+        "table": "friendViews"
+      }
+    }
+  ]
+}

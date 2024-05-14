@@ -1,0 +1,13 @@
+{
+  "id": "mig_cnfos2rnsjqdkkr2n1m0",
+  "parentID": "mig_cn6fmn00dd816ssm2dpg",
+  "checksum": "1:a05b465a5a7afa0b76f0a957316db5c284f8d5e7e1c71b56172bfa65dfb02959",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "friendviews",
+        "oldName": "friendViews"
+      }
+    }
+  ]
+}

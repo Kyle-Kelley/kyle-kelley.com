@@ -1,0 +1,18 @@
+{
+  "id": "mig_cn6fmgi9ohilplgetg1g",
+  "parentID": "mig_cn6fm606l80adig0p04g",
+  "checksum": "1:8efdf56e5fc47c78ce9312d76c82c344adaec1d00031803d0983cb98e9d75a16",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "title"
+        },
+        "table": "friendViews"
+      }
+    }
+  ]
+}

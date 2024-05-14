@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Kyle-Kelley-s-workspace-8qp0rn.us-east-1.xata.sh/db/friendviews",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mig_cn6fm606l80adig0p04g",
+  "parentID": "mig_cn6fm406l80adig0p03g",
+  "checksum": "1:dadae55dfda8454d1042a8bc0349351d3d5768a4b9251c9baeac392acc609eb2",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "category",
+        "oldName": "Category",
+        "table": "friendViews"
+      }
+    }
+  ]
+}

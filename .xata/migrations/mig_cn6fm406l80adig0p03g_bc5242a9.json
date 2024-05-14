@@ -1,0 +1,16 @@
+{
+  "id": "mig_cn6fm406l80adig0p03g",
+  "parentID": "mig_cn6fjro6l80adig0p02g",
+  "checksum": "1:bc5242a93ad003be52f2626ecadb6a238bde435aa0121caa7b5fec2e15c2d996",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "reviewBody",
+          "type": "text"
+        },
+        "table": "friendViews"
+      }
+    }
+  ]
+}

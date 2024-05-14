@@ -1,0 +1,18 @@
+{
+  "id": "mig_cn6fjro6l80adig0p02g",
+  "parentID": "mig_cn6fi3o6l80adig0p01g",
+  "checksum": "1:8a04141398f0270d4423e50b4fa113ec98e71c7fe1ddd62beca309a1e998fbd2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Category",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "general"
+        },
+        "table": "friendViews"
+      }
+    }
+  ]
+}
