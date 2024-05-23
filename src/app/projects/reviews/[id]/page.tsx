@@ -10,8 +10,8 @@ export default async function View({ params }: { params: { slug: string } }) {
     const view =  await xata.db.friendviews.filter({ id: params.slug }).getFirst();
 
     return (
-      <div className="w-full max-w-5xl mt-16 mx-auto shadow-xl p-10">
-        <Link href="/projects/friendviews/" className="text-3xl">
+      <div className="w-full max-w-5xl mt-16 mx-auto bg-blue-800 rounded-xl p-10">
+        <Link href="/projects/reviews/" className="text-3xl hover:text-black">
           &larr; Co-Worker Recognition
         </Link>
    

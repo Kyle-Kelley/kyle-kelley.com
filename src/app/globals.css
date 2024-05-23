@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #0070f3;
+  background-color: #111827;
 }
 
 .sctn {
@@ -53,7 +53,6 @@ a.v2 {
 }
 
 h1 {
-  color: #faebd7;
   font-size: 2.8rem;
   pointer-events: none;
 }

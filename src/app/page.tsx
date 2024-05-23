@@ -1,30 +1,34 @@
-import React from 'react';
-import Link  from 'next/link'; // If you're using React Router
+import React from "react";
+import Typewriter from "./components/typewriter";
+import Image from "next/image";
+import Link from "next/link";
 
-interface Page {
-  pageName: string;
-  pageUrl: string;
-}
+const Home: React.FC = () => {
+  const header: string[] = [
+    "(mostly) front end developer ;)",
+    "problem solver",
+    "chess enthusiast",
+  ];
 
-const pages: Page[] = [
-  {
-    pageName: "Co-Worker Recognition",
-    pageUrl: "/projects/friendviews",
-  },
-];
-
-const Page: React.FC = () => {
   return (
-    <div className="sctn w-11/12 sm:max-w-lg lg:max-w-5xl lg:basis-1/2 crd-cnt mx-auto">
-      <div className="mx-auto">
-        {pages.map((page) => (
-          <div key={page.pageName} className="shadow-xl mb-20 p-10">
-            <Link href={page.pageUrl}>{page.pageName}</Link>
-          </div>
-        ))}
+    <>
+      <div className="bg-blue-800 mx-auto mt-4 w-11/12 lg:w-3/4 md:w-1/2 text-center text-black rounded-lg ">
+        {/* <Image src="" alt=""/> */}
+        <h1>Hi! I'm Kyle Kelley</h1>
+        <Typewriter
+          className="mt-10 text-black"
+          text={header}
+          delay={125}
+          wordPause={150}
+        />
       </div>
-    </div>
+      <div className="bg-blue-800 p-8 mx-auto mt-4 w-11/12 lg:w-3/4 md:w-1/2 text-center text-black rounded-lg ">
+        <Link href="/projects/reviews/" className="text-black hover:text-white">
+          <h2>Co-Worker Recognition</h2>
+        </Link>
+      </div>
+    </>
   );
 };
 
-export default Page;
+export default Home;
