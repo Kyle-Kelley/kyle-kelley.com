@@ -22,8 +22,8 @@ const Page: React.FC = () => {
             <Counter />
         </div>
         {pages.map((page) => (
-            <div className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg">
-                <div key={page.pageName} className="mb-20 p-10">
+            <div key={page.pageName} className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg">
+                <div className="mb-20 p-10">
                     <Link className='text-slate-300 hover:text-white' href={page.pageUrl}>{page.pageName}</Link>
                 </div>
             </div>
