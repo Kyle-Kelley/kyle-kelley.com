@@ -14,7 +14,7 @@ const Home: React.FC = () => {
     <>
       <div className="bg-blue-800 mx-auto mt-4 w-11/12 lg:w-3/4 md:w-1/2 text-center rounded-lg ">
         {/* <Image src="" alt=""/> */}
-        <h1 className="text-slate-300">Hi! I'm Kyle Kelley</h1>
+        <h1 className="text-slate-300">Hi! I&apos;m Kyle Kelley</h1>
         <Typewriter
           className="mt-10 text-slate-300"
           text={header}
