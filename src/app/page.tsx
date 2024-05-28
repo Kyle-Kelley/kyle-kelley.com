@@ -1,5 +1,5 @@
 import React from "react";
-import Typewriter from "./components/typewriter";
+import Typewriter from "./components/Typewriter";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link  from 'next/link'; 
-import Counter from '../components/counter';
+import Counter from '../components/Counter';
+import ToDoApp from '../components/ToDoApp';
 
 interface Page {
   pageName: string;
@@ -23,11 +24,12 @@ const Page: React.FC = () => {
         </div>
         {pages.map((page) => (
             <div key={page.pageName} className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg">
-                <div className="mb-20 p-10">
+                <div className="p-10">
                     <Link className='text-slate-300 hover:text-white' href={page.pageUrl}>{page.pageName}</Link>
                 </div>
             </div>
         ))}
+        <ToDoApp />
     </div>
   );
 };
