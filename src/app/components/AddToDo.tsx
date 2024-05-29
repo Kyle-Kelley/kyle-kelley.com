@@ -50,9 +50,9 @@ const AddToDo: React.FC<AddToDoProps> = ({ addToDo }) => {
             onChange={handleChange} 
             onKeyDown={handleKeyDown}
             placeholder="Add a new task" 
-            className='w-1/4 mx-auto rounded-xl text-black text-center'
+            className='w-full lg:w-1/4 mx-auto rounded-xl text-black text-center'
             />
-            <button onClick={handleClick} className="mx-auto text-black hover:text-white p-2 bg-blue-400 hover:bg-blue-600 w-3/4 md:w-1/4 rounded-xl mx-auto row-span-1" type="submit">Add</button>
+            <button onClick={handleClick} className="mx-auto text-black hover:text-white p-2 bg-blue-400 hover:bg-blue-600 w-3/4 lg:w-1/4 rounded-xl mx-auto row-span-1" type="submit">Add</button>
       </div>
     )
 }
