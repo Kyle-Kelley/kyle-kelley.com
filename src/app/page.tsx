@@ -1,5 +1,5 @@
 import React from "react";
-import Typewriter from "./components/Typewriter";
+import Typewriter from "./components/TypewriterNew";
 import Link from "next/link";
 
 const Home: React.FC = () => {

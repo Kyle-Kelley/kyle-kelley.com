@@ -1,6 +1,6 @@
 import React from 'react';
 import Link  from 'next/link'; 
-import Counter from '../components/CounterNew';
+import Counter from '../components/Counter';
 import ToDoApp from '../components/ToDoApp';
 
 interface Page {
