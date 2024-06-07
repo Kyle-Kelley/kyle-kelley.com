@@ -11,7 +11,7 @@ export interface ToDo {
     task: string;
 }
 
-const ToDoApp: React.FC<ToDoAppProps> = (props) => {
+const ToDoApp: React.FC<ToDoAppProps> = () => {
     const [todos, setTodos] = useState<ToDo[]>([])
 
     const addToDo = ( task: string) => {
