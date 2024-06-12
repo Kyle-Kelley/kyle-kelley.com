@@ -2,6 +2,7 @@ import React from 'react';
 import Link  from 'next/link'; 
 import Counter from '../components/Counter';
 import ToDoApp from '../components/ToDoApp';
+import StateLifter from '../components/StateLifter';
 
 interface Page {
   pageName: string;
@@ -34,6 +35,14 @@ const Page: React.FC = () => {
             </div>
         ))}
         <ToDoApp />
+        <StateLifter />
+        {/* <div className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg p-10">
+          <Link className='text-slate-300 hover:text-white' href='/projects/yext/content'>
+            <h2>
+              Yext Content API
+            </h2>
+          </Link>
+        </div> */}
     </div>
   );
 };
