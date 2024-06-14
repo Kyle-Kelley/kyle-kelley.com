@@ -1,20 +1,30 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import Link from 'next/link';
+// import axios from 'axios';
 
 interface Entity {
-    id: string,
-    title: string
+    key: {
+        primaryKey: string
+    }
+    uid: number,
+    name: string,
+    description: string,
+    timezone: string,
+    websiteUrl: {
+        preferDisplayUrl: boolean,
+        url: string
+    }
 }
 
 const YextContent: React.FC = () => {
-    const [data, setData] = useState<Entity[] | null>(null)
+    const [data, setData] = useState<Entity[]>([])
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-    //   const apiURL = `https://sbx-cdn.yextapis.com/v2/accounts/me/content/KylesContent?api_key=09d5abe69e856d20f8e6d98cdc75f78c?v=20240609`
+    // useEffect(() => {
+    //   const apiURL = `https://api.yextapis.com/v2/accounts/me/content/test1?api_key=8d1247cbeff0ad1fde2cb67eac702be2?v=20240609`
       
     //    axios.get('https://api-sandbox.yext.com/v2/accounts/me/connectors/yext1/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f', {
     //         headers: {
@@ -24,50 +34,60 @@ const YextContent: React.FC = () => {
     //       })
 
     //new attempt url: https://api-sandbox.yext.com/v2/accounts/me/connectors/connectorOne/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f
-    axios.get('/api/content')
-          .then(response => {
-            setData(response.data.response.entities);
-            setLoading(false);
-          })
-          .catch(error => {
-            setError(error.message);
-            setLoading(false);
-          })
-    },[])
+    // axios.get('/api/content')
+    //       .then(response => {
+    //         setData(response.data.response.entities);
+    //         setLoading(false);
+    //       })
+    //       .catch(error => {
+    //         setError(error.message);
+    //         setLoading(false);
+    //       })
+    // },[])
     
-        // useEffect(() => {
-        //     const fetchContent = async () => {
-        //         try {
-        //             const response = await fetch('/api/content', { 
-        //                 method: 'GET',
-        //                 headers: {
-        //                     'content-type': "application/json"
-        //                 } });
-        //             // const response = axios.get('https://api-sandbox.yext.com/v2/accounts/me/connectors/yext1/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f')
-        //             if (!response.ok) {
-        //                 throw new Error('Network response was not okay');
-        //             }
-        //             const result = await response.json();
-        //             setData(result);
-        //             setLoading(false);
-        //         } catch (error: any) {
-        //             setError(error.message);
-        //         setLoading(false);
-        //         } 
-        //     }
-        //     fetchContent();
-        // },[]);
+        useEffect(() => {
+            const fetchContent = async () => {
+                try {
+                    const response = await fetch('/api/content', { 
+                        method: 'GET',
+                        headers: {
+                            'content-type': "application/json"
+                        } });
+                        
+                        // const response = axios.get('https://api-sandbox.yext.com/v2/accounts/me/connectors/yext1/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f')
+                        if (!response.ok) {
+                            throw new Error('Network response was not okay');
+                            }
+                    const result = await response.json();
+                    // console.log(result);
+                    const entities = result.data.response?.docs || [];
+                    // console.log('Extracted Entities:', entities);
+                    setData(entities);
+                    setLoading(false);
+                } catch (error: any) {
+                    setError(error.message);
+                setLoading(false);
+                } 
+            }
+            fetchContent();
+        },[]);
         
 
     return(
-        <div className='w-3/4'>
-            <div className='w-3/4 flex items-center text-center'>
+        <div className=''>
+            <div className='items-center text-center w-3/4 mx-auto'>
                 {loading && <div>loading...</div>}
                 {error && <div>Error: {error}</div>}
-                <ul className='flex'>
+                <ul className='grid grid-cols-2 gap-4 place-content-center mx-auto'>
                     {data && 
-                        data.map(({id, title}) => (
-                            <li key={id}>{title}</li>
+                        data.map((entity) => (
+                            <li key={entity.uid} className='bg-blue-800 text-center rounded-lg p-6 break-words'>
+                                <Link className='hover:text-blue-400 text-base' href={entity.websiteUrl.url} target="_blank" rel="noopener noreferrer">
+                                    <h3 className='hover:text-white' >{entity.name}</h3>
+                                    <p className='text-xs' >{entity.timezone}</p>
+                                    <p className='text-lg mb-2 mt-2' >{entity.description}</p>
+                                </Link>
+                            </li>
                         ))}
                 </ul> 
             </div>

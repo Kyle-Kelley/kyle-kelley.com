@@ -11,8 +11,8 @@ const StateInput: React.FC<StateInputProps> = ({sharedState, setSharedState}) =>
     };
 
     return (
-        <div className='w-full'>
-            <input type="text" value={sharedState} onChange={handleChange} />
+        <div className='w-full' >
+            <input className='rounded-xl p-2 text-center' placeholder='write something cool' type="text" value={sharedState} onChange={handleChange} />
         </div>
     )
 

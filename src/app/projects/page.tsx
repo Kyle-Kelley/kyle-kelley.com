@@ -36,13 +36,13 @@ const Page: React.FC = () => {
         ))}
         <ToDoApp />
         <StateLifter />
-        {/* <div className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg p-10">
-          <Link className='text-slate-300 hover:text-white' href='/projects/yext/content'>
+        <div className="mx-auto bg-blue-800 text-center mt-4 w-11/12 lg:w-3/4 text-center rounded-lg p-10">
+          <Link className='text-slate-300 hover:text-white' href='/projects/yext/'>
             <h2>
-              Yext Content API
+              Yext Playground
             </h2>
           </Link>
-        </div> */}
+        </div>
     </div>
   );
 };
