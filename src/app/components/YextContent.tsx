@@ -78,10 +78,10 @@ const YextContent: React.FC = () => {
             <div className='items-center text-center w-3/4 mx-auto'>
                 {loading && <div>loading...</div>}
                 {error && <div>Error: {error}</div>}
-                <ul className='grid grid-cols-2 gap-4 place-content-center mx-auto'>
+                <ul className='block md:grid md:grid-cols-2 gap-4 place-content-center mx-auto'>
                     {data && 
                         data.map((entity) => (
-                            <li key={entity.uid} className='bg-blue-800 text-center rounded-lg p-6 break-words'>
+                            <li key={entity.uid} className='mb-2 md:mb-0 bg-blue-800 text-center rounded-lg p-6 break-words'>
                                 <Link className='hover:text-blue-400 text-base' href={entity.websiteUrl.url} target="_blank" rel="noopener noreferrer">
                                     <h3 className='hover:text-white' >{entity.name}</h3>
                                     <p className='text-xs' >{entity.timezone}</p>

@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 // import axios from 'axios';
 
+interface YextBioProps {
+    className?: string
+}
+
 interface Photo {
     url: string;
     height: number;
@@ -36,8 +40,30 @@ interface Entity {
     sections: Section[];
 }
 
-const YextBio: React.FC = () => {
-    const [data, setData] = useState<Entity[]>([])
+interface ResponseData {
+    accountId: string;
+    id: string;
+    language: string;
+    name: string;
+    publish: boolean;
+    sections: Section[];
+  }
+  
+  interface ApiResponse {
+    data: {
+      meta: {
+        uuid: string;
+        errors: any[];
+      };
+      response: ResponseData;
+    };
+  }
+
+
+  
+
+const YextBio: React.FC<YextBioProps> = ({ className }) => {
+    const [data, setData] = useState<Item[]>([])
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -76,11 +102,14 @@ const YextBio: React.FC = () => {
                         if (!response.ok) {
                             throw new Error('Network response was not okay');
                             }
-                    const result = await response.json();
+
+                    const result: ApiResponse = await response.json();
                     console.log(result);
-                    const entities = result.data.response || [];
-                    console.log('Extracted Entities:', entities);
-                    setData(entities);
+
+                    const sections: Section[] = result.data.response.sections || [];
+                    const items: Item[] = sections.reduce((acc: Item[], section: Section) => acc.concat(section.items), []);
+                    console.log('Extracted Sections:', items);
+                    setData(items);
                     setLoading(false);
                 } catch (error: any) {
                     setError(error.message);
@@ -92,33 +121,21 @@ const YextBio: React.FC = () => {
         
 
     return(
-        <div className=''>
+        <div className={className}>
             <div className='items-center text-center w-3/4 mx-auto'>
                 {loading && <div>loading...</div>}
                 {error && <div>Error: {error}</div>}
-                <ul className='grid grid-cols-2 gap-4 place-content-center mx-auto'>
+                <ul className='block md:grid md:grid-cols-2 gap-4 place-content-center mx-auto'>
                     {data.length > 0 && 
-                        data.map((entity) => (
-                            <li key={entity.id} className='bg-blue-800 text-center rounded-lg p-6 break-words'>
-                                <h3 className='hover:text-white'>{entity.name}</h3>
-                                {entity.sections.map(section => (
-                                    <div key={section.id}>
-                                        {section.items.map(item => (
-                                            <div key={item.id}>
-                                                <h4>{item.name}</h4>
-                                                <p>{item.title}</p>
-                                                <p>{item.description}</p>
-                                                {item.photo && (
-                                                    <img src={item.photo.url} alt={item.name} height={item.photo.height} width={item.photo.width} />
-                                                )}
-                                                {item.email && <p>Email: {item.email}</p>}
-                                                <p>Certifications: {item.certifications.join(', ')}</p>
-                                                <p>Education: {item.education.join(', ')}</p>
-                                                <p>Services: {item.services.join(', ')}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
+                        data.map((item) => (
+                            <li key={item.id} className='mb-2 md:mb-0 bg-blue-800 flex flex-col justify-center text-center rounded-lg p-6 break-words'>
+                                <h3 className='text-slate-300 text-4xl'>{item.name}</h3>
+                                <h5 className='text-sm pt-2 pb-2 text-slate-300'>{item.title}</h5>
+                                <p className='text-xl text-slate-300'>{item.description}</p>
+                                {item.photo && (
+                                    <img src={item.photo.url} alt={item.name} className='rotate-180 pt-2 pb-2 ' height={item.photo.height} width={item.photo.width} />
+                                )}
+                                {item.email && <a href={`mailto:${item.email}`} className='text-base text-slate-300 hover:text-slate-500'>Email: {item.email}</a>}
                             </li>
                         ))
                     }
