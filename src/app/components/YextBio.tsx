@@ -122,7 +122,7 @@ const YextBio: React.FC<YextBioProps> = ({ className }) => {
 
     return(
         <div className={className}>
-            <div className='items-center text-center w-3/4 mx-auto'>
+            <div className='items-center text-center mx-auto'>
                 {loading && <div>loading...</div>}
                 {error && <div>Error: {error}</div>}
                 <ul className='block md:grid md:grid-cols-2 gap-4 place-content-center mx-auto'>
