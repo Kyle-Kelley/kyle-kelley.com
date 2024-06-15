@@ -82,8 +82,8 @@ const YextContent: React.FC = () => {
                     {data && 
                         data.map((entity) => (
                             <li key={entity.uid} className='mb-2 md:mb-0 bg-blue-800 text-center rounded-lg p-6 break-words'>
-                                <Link className='hover:text-blue-400 text-base' href={entity.websiteUrl.url} target="_blank" rel="noopener noreferrer">
-                                    <h3 className='hover:text-white' >{entity.name}</h3>
+                                <Link className='hover:text-blue-400 text-base text-slate-300' href={entity.websiteUrl.url} target="_blank" rel="noopener noreferrer">
+                                    <h3 >{entity.name}</h3>
                                     <p className='text-xs' >{entity.timezone}</p>
                                     <p className='text-lg mb-2 mt-2' >{entity.description}</p>
                                 </Link>
