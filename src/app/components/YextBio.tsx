@@ -67,29 +67,7 @@ const YextBio: React.FC<YextBioProps> = ({ className }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // useEffect(() => {
-    //   const apiURL = `https://api.yextapis.com/v2/accounts/me/content/test1?api_key=8d1247cbeff0ad1fde2cb67eac702be2?v=20240609`
-      
-    //    axios.get('https://api-sandbox.yext.com/v2/accounts/me/connectors/yext1/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f', {
-    //         headers: {
-    //             'Authorization': `Bearer ${process.env.YEXT_API_KEY}`,
-    //             'Content-Type': 'application/json'
-    //         }
-    //       })
-
-    //new attempt url: https://api-sandbox.yext.com/v2/accounts/me/connectors/connectorOne/pushData?v=20210428&api_key=f71911d8bde0caac2f637cbf4c53286f
-    // axios.get('/api/content')
-    //       .then(response => {
-    //         setData(response.data.response.entities);
-    //         setLoading(false);
-    //       })
-    //       .catch(error => {
-    //         setError(error.message);
-    //         setLoading(false);
-    //       })
-    // },[])
-    // https://cdn.yextapis.com/v2/accounts/me/bios/2271392?api_key=8d1247cbeff0ad1fde2cb67eac702be2&v=20240612
-        useEffect(() => {
+    useEffect(() => {
             const fetchBio = async () => {
                 try {
                     const response = await fetch('/api/bio', { 

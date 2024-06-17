@@ -18,7 +18,7 @@ interface Entity {
     }
 }
 
-const YextContent: React.FC = () => {
+const YextLocationData: React.FC = () => {
     const [data, setData] = useState<Entity[]>([])
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -38,9 +38,9 @@ const YextContent: React.FC = () => {
                             }
                     const result = await response.json();
                     // console.log(result);
-                    const entities = result.data.response?.docs || [];
+                    const locInfo = result.data.response?.docs || [];
                     // console.log('Extracted Entities:', entities);
-                    setData(entities);
+                    setData(locInfo);
                     setLoading(false);
                 } catch (error: any) {
                     setError(error.message);
@@ -73,4 +73,4 @@ const YextContent: React.FC = () => {
     )
 }
 
-export default YextContent;
+export default YextLocationData;
