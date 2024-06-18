@@ -3,9 +3,11 @@ import axios from 'axios';
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const uid = searchParams.get('uid');
   const YEXT_API_URL = process.env.YEXT_API_URL;
   const YEXT_API_KEY = process.env.YEXT_API_KEY;
-  const requestUrl = `${YEXT_API_URL}?api_key=${YEXT_API_KEY}&v=20240612`;
+  const requestUrl = `${YEXT_API_URL}?api_key=${YEXT_API_KEY}&v=20240617`;
 
   if (!YEXT_API_URL || !YEXT_API_KEY) {
     return NextResponse.json({ message: 'Missing API URL or API Key' }, { status: 400 });
@@ -17,6 +19,9 @@ export async function GET(request: Request) {
     }
 
     const data = await apiResponse.json();
+    const entities = data.response.docs;
+
+
     return NextResponse.json({
       message: 'Yext Success',
       data: data,

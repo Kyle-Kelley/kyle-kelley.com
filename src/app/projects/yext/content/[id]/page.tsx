@@ -1,28 +1,30 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
 import YextLocationData from '@/app/components/YextLocationData';
+import { useParams } from 'next/navigation'
 
-// interface Entity {
-//     key: {
-//         primaryKey: string
-//     }
-//     uid: number,
-//     name: string,
-//     description: string,
-//     timezone: string,
-//     websiteUrl: {
-//         preferDisplayUrl: boolean,
-//         url: string
-//     };
 
-export async function Page({ params }: { params: { uid: string } }) {
-    
-    const locData = await fetch('/api/content').then((res) => res.json())
-    console.log(locData)
+
+const  LocDataPage: React.FC = () => {
+    const params = useParams();
+    console.log('Params:',params)
+    const uid  = params?.id;
+
+    if (!uid) {
+        return <div>UID parameter is missing</div>
+    }
+
+    const parsedUid = Array.isArray(uid) ? parseInt(uid[0], 10) : parseInt(uid, 10);
+
+    if (isNaN(parsedUid)) {
+      return <div>Invalid UID parameter</div>;
+    }
+
     return (
         <div>
-            <YextLocationData />
+            <YextLocationData uid={parsedUid} />
         </div>
     )
 }
+
+export default LocDataPage;

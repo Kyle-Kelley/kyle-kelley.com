@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 // import axios from 'axios';
 
 interface YextBioProps {
@@ -15,14 +14,14 @@ interface Photo {
 }
 
 interface Item {
-    certifications: any[];  // Update the type if the structure of certifications is known
+    certifications: any[];  
     description: string;
-    education: any[];       // Update the type if the structure of education is known
-    email?: string;         // email is optional as it might not be present in all items
+    education: any[];       
+    email?: string;         
     id: string;
     name: string;
-    photo?: Photo;          // photo is optional as it might not be present in all items
-    services: any[];        // Update the type if the structure of services is known
+    photo?: Photo;          
+    services: any[];        
     title: string;
 }
 
